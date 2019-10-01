@@ -1,11 +1,55 @@
-function preload(){
-  // put preload code here
-}
+var R;
+var G;
+var B;
+var nR;
+var nG;
+var nB;
+var inc = 1;
 
 function setup() {
-  // put setup code here
+  createCanvas(windowWidth,windowHeight);
+  background("black");
+  rectMode(CENTER);
+  colorMode(RGB);
+  frameRate(60)
 }
 
 function draw() {
-  // put drawing code here
+var pixWidth = 50;
+var pixWidthNum = width/pixWidth;
+
+var pixHeight = 50;
+var pixHeightNum = height/pixHeight;
+
+  for (var n=pixHeight/2; n<height; n+=pixHeight)
+  {
+    for (var i=pixWidth/2; i<width; i+=pixWidth)
+    {
+
+      R = random(50)+(noise(frameCount)*10);
+      G = random(10);
+      B = random(0);
+
+      if (mouseIsPressed) //(mouseX >= i && mouseX <= i+pixWidth && mouseY >= n && mouseY <= n+pixHeight)
+      {
+        fill(mouseY/15,0,0);
+        rect(i,n,pixWidth,pixHeight);
+
+      }
+      else if (mouseX >= i && mouseX <= i+pixWidth && mouseY >= n && mouseY <= n+pixHeight) {
+        // fill(R,G,B);
+        // rect(i,n,pixWidth/(noise(frameCount/10)*5),pixHeight/(noise(frameCount/10)*5));
+        fill(0,0,0);
+        rect(i,n,pixWidth,pixHeight);
+      }
+      else {
+        // rect(i,n,pixWidth/(noise(frameCount/10)*5),pixHeight/(noise(frameCount/10)*5));
+        fill(R,G,B);
+        strokeWeight(5);
+        rect(i,n,pixWidth/(noise(frameCount/80)*5),pixHeight/(noise(frameCount/80)*5));
+      }
+
+
+      }
+    }
 }
