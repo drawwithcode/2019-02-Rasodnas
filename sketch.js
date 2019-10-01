@@ -12,9 +12,11 @@ function setup() {
   rectMode(CENTER);
   colorMode(RGB);
   frameRate(60)
+
 }
 
 function draw() {
+
 var pixWidth = 50;
 var pixWidthNum = width/pixWidth;
 
@@ -44,10 +46,18 @@ var pixHeightNum = height/pixHeight;
       }
       else {
         // rect(i,n,pixWidth/(noise(frameCount/10)*5),pixHeight/(noise(frameCount/10)*5));
+
         fill(R,G,B);
         strokeWeight(5);
-        rect(i,n,pixWidth/(noise(frameCount/80)*5),pixHeight/(noise(frameCount/80)*5));
+        rect(i,n,pixWidth/(noise(frameCount/100)*5),pixHeight/(noise(frameCount/100)*5));
       }
+
+      push();
+      translate (width/2.5,-height/12);
+      fill(30,20,20);
+      textSize(8);
+      text('Click and drag your cursor down to add background', 0, height - 100);
+      pop();
 
 
       }
